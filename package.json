@@ -1,7 +1,7 @@
 {
   "name": "port",
   "version": "1.0.0",
-  "description": "",
+  "description": "![](https://img.shields.io/badge/Microverse-blueviolet)",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -15,5 +15,13 @@
     "stylelint-config-standard": "^21.0.0",
     "stylelint-csstree-validator": "^1.9.0",
     "stylelint-scss": "^3.21.0"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/habasm/portfolio.git"
+  },
+  "bugs": {
+    "url": "https://github.com/habasm/portfolio/issues"
+  },
+  "homepage": "https://github.com/habasm/portfolio#readme"
 }

@@ -1,0 +1,260 @@
+// Mobile menu functionality
+export const menuIconMobile = document.querySelector(".navbar__hamb");
+const menu = document.querySelector(".navbar__menu");
+export const menuLinks = document.querySelectorAll(".navbar__menu__link");
+
+const isActiveClassExisted = (element) => element.classList.contains("active");
+
+const refreshIcon = () => {
+  if (isActiveClassExisted(menu)) {
+    menuIconMobile.setAttribute("src", "images/hamburguer-close.png");
+  } else {
+    menuIconMobile.setAttribute("src", "images/hamburguer.png");
+  }
+};
+export const openMenu = () => {
+  menu.classList.toggle("active");
+  refreshIcon();
+};
+
+export const closeMenu = () => {
+  menu.classList.remove("active");
+  refreshIcon();
+};
+
+// Popup window functionality
+export const projects = [
+  {
+    name: "Topic",
+    feature: "CANOPY",
+    background: "Back End Dev",
+    year: "2015",
+    image: "images/desktop/tonic-project-desktop.svg",
+    description:
+      "A daily selection of privately personalized reads; no accounts or sign-ups required.",
+    tool1: "html",
+    tool2: "css",
+    tool3: "javascript",
+    linkLive: "https://habasm.github.io/portfolio/",
+    linkSource: "https://github.com/habasm",
+  },
+  {
+    name: "Multi-Post Stories",
+    feature: "FACEBOOK",
+    background: "Full Stack Dev",
+    year: "2015",
+    image: "images/desktop/multi-post-stories-project.svg",
+    description:
+      "Experimental content creation feature that allows users to add to an existing story over the course of a day without spamming their friends.",
+    tool1: "html",
+    tool2: "css",
+    tool3: "javascript",
+    linkLive: "https://habasm.github.io/portfolio/",
+    linkSource: "https://github.com/habasm",
+  },
+  {
+    name: "Facebook 360",
+    feature: "FACEBOOK",
+    background: "Full Stack Dev",
+    year: "2015",
+    image: "images/desktop/facebook-360-project.svg",
+    description:
+      "Exploring the future of media in Facebook's first Virtual Reality app; a place to discover and enjoy 360 photos and videos on Gear VR.",
+    tool1: "html",
+    tool2: "css",
+    tool3: "javascript",
+    linkLive: "https://habasm.github.io/portfolio/",
+    linkSource: "https://github.com/habasm",
+  },
+  {
+    name: "Uber Navigation",
+    feature: "Uber",
+    background: "Lead Developer",
+    year: "2018",
+    image: "images/desktop/uber-navigation-project.svg",
+    description:
+      "A smart assistant to make driving more safe, efficient, and fun by unlocking your most expensive computer: your car.",
+    tool1: "html",
+    tool2: "css",
+    tool3: "javascript",
+    linkLive: "https://habasm.github.io/portfolio/",
+    linkSource: "https://github.com/habasm",
+  },
+];
+
+const startingPoint = document.querySelector(".hero");
+
+export function createModal() {
+  startingPoint.insertAdjacentHTML(
+    "afterend",
+    `<div class='overlay'>
+    <section class='modal'>
+    <div class='modal__header flex'>
+    <h2 class='project-name fw-700 fz-32 lh-44 clr-n-800'></h2>
+    <img  class='closeModal' src='images/desktop/close.svg' alt='close icon'></img>
+    </div>
+    <div class='modal__feature flex'>
+    <p class="project-feature fw-600 fz-13 lh-16 clr-n-600"></p>
+    <ul class=" flex">
+    <li class=" project-background fw-600 fz-13 lh-16 clr-n-500"></li>
+    <li class="project-year fw-600 fz-13 lh-16 clr-n-500"> </li>
+    </ul></div>
+    <div class='image-project'><img class='modal__image project-image' src='' alt='project image'></img></div>
+    <ul class='modal__dsc ul flex'>
+    <li class='modal__dsc__first'><p class='project-description fw-400 fz-15 lh-24 clr-n-600'></p></li>
+    <li class="modal__dsc__second flex">
+    <div class='flex'>
+    <p class="project-tool1 fw-500 fz-12 lh-16 clr-p-400 bg-p-50"></p>
+    <p class="project-tool2 fw-500 fz-12 lh-16 clr-p-400 bg-p-50"></p>
+    <p class="project-tool3 fw-500 fz-12 lh-16 clr-p-400 bg-p-50"></p>
+    </div>
+    <ul class='modal__btn ul flex'>
+    <li>
+    <a href='' class="btn link project-linkLive fw-500 fz-17 lh-24 clr-p-500 bg-white">See Live</a>
+    </li>
+    <li>
+    <a href='' class="btn link project-linkSource fw-500 fz-17 lh-24 clr-p-500 bg-white">See Source</a>
+    </li>
+    </ul>
+    </li>
+    </ul>
+    </section>
+    </div>`
+  );
+}
+
+menuIconMobile.addEventListener("click", openMenu);
+menuLinks.forEach((menuLink) => {
+  menuLink.addEventListener("click", closeMenu);
+});
+
+// Event that detects when the page loads
+document.addEventListener("DOMContentLoaded", () => {
+  createModal();
+
+  const buttonsProject = document.querySelectorAll(".works__card button");
+  const closeIcon = document.querySelector(".closeModal");
+  const modal = document.querySelector(".modal");
+  const backgroundModal = document.querySelector(".overlay");
+  const projectName = document.querySelector(".project-name");
+  const projectFeature = document.querySelector(".project-feature");
+  const projectBack = document.querySelector(".project-background");
+  const projectYear = document.querySelector(".project-year");
+  const projectImage = document.querySelector(".project-image");
+  const projectDescription = document.querySelector(".project-description");
+  const projectTool1 = document.querySelector(".project-tool1");
+  const projectTool2 = document.querySelector(".project-tool2");
+  const projectTool3 = document.querySelector(".project-tool3");
+  const projectLinkLive = document.querySelector(".project-linkLive");
+  const projectLinkSource = document.querySelector(".project-linkSource");
+
+  const closeModal = () => {
+    modal.classList.remove("active");
+    backgroundModal.classList.remove("active");
+  };
+
+  buttonsProject.forEach((button) => {
+    button.addEventListener("click", () => {
+      if (button.id === "0") {
+        projectName.textContent = `${projects[button.id].name}`;
+        projectFeature.textContent = `${projects[button.id].feature}`;
+        projectBack.textContent = `${projects[button.id].background}`;
+        projectYear.textContent = `${projects[button.id].year}`;
+        projectImage.setAttribute("src", `${projects[button.id].image}`);
+        projectDescription.textContent = `${projects[button.id].description}`;
+        projectTool1.textContent = `${projects[button.id].tool1}`;
+        projectTool2.textContent = `${projects[button.id].tool2}`;
+        projectTool3.textContent = `${projects[button.id].tool3}`;
+        projectLinkLive.setAttribute("href", `${projects[button.id].linkLive}`);
+        projectLinkSource.setAttribute(
+          "href",
+          `${projects[button.id].linkSource}`
+        );
+        modal.classList.add("active");
+        backgroundModal.classList.add("active");
+      } else if (button.id === "1") {
+        projectName.textContent = `${projects[button.id].name}`;
+        projectFeature.textContent = `${projects[button.id].feature}`;
+        projectBack.textContent = `${projects[button.id].background}`;
+        projectYear.textContent = `${projects[button.id].year}`;
+        projectImage.setAttribute("src", `${projects[button.id].image}`);
+        projectDescription.textContent = `${projects[button.id].description}`;
+        projectTool1.textContent = `${projects[button.id].tool1}`;
+        projectTool2.textContent = `${projects[button.id].tool2}`;
+        projectTool3.textContent = `${projects[button.id].tool3}`;
+        projectLinkLive.setAttribute("href", `${projects[button.id].linkLive}`);
+        projectLinkSource.setAttribute(
+          "href",
+          `${projects[button.id].linkSource}`
+        );
+        modal.classList.add("active");
+        backgroundModal.classList.add("active");
+      } else if (button.id === "2") {
+        projectName.textContent = `${projects[button.id].name}`;
+        projectFeature.textContent = `${projects[button.id].feature}`;
+        projectBack.textContent = `${projects[button.id].background}`;
+        projectYear.textContent = `${projects[button.id].year}`;
+        projectImage.setAttribute("src", `${projects[button.id].image}`);
+        projectDescription.textContent = `${projects[button.id].description}`;
+        projectTool1.textContent = `${projects[button.id].tool1}`;
+        projectTool2.textContent = `${projects[button.id].tool2}`;
+        projectTool3.textContent = `${projects[button.id].tool3}`;
+        projectLinkLive.setAttribute("href", `${projects[button.id].linkLive}`);
+        projectLinkSource.setAttribute(
+          "href",
+          `${projects[button.id].linkSource}`
+        );
+        modal.classList.add("active");
+        backgroundModal.classList.add("active");
+      } else if (button.id === "3") {
+        projectName.textContent = `${projects[button.id].name}`;
+        projectFeature.textContent = `${projects[button.id].feature}`;
+        projectBack.textContent = `${projects[button.id].background}`;
+        projectYear.textContent = `${projects[button.id].year}`;
+        projectImage.setAttribute("src", `${projects[button.id].image}`);
+        projectDescription.textContent = `${projects[button.id].description}`;
+        projectTool1.textContent = `${projects[button.id].tool1}`;
+        projectTool2.textContent = `${projects[button.id].tool2}`;
+        projectTool3.textContent = `${projects[button.id].tool3}`;
+        projectLinkLive.setAttribute("href", `${projects[button.id].linkLive}`);
+        projectLinkSource.setAttribute(
+          "href",
+          `${projects[button.id].linkSource}`
+        );
+        modal.classList.add("active");
+        backgroundModal.classList.add("active");
+      }
+    });
+  });
+
+  closeIcon.addEventListener("click", closeModal);
+});
+
+const alllinks = document.querySelectorAll("a:link");
+alllinks.forEach((link) => {
+  link.addEventListener("click", (e) => {
+    e.preventDefault();
+    const href = link.getAttribute("href");
+
+    // Scrolling to other links
+
+    if (href === "#") {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
+    }
+
+    if (href !== "#" && href.startsWith("#")) {
+      const sectionEl = document.querySelector(href);
+      sectionEl.scrollIntoView({ behavior: "smooth" });
+      document.body.style.overflowY = "visible";
+    }
+
+    // close mobile navigation
+
+    if (link.classList.contains("main-nav-desktop")) {
+      headerEl.classList.toggle("nav-open");
+    }
+  });
+});
