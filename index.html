@@ -337,7 +337,7 @@
           feature that you need built or a project that needs coding. I’d love
           to help with it
         </p>
-        <form action="https://formspree.io/f/xqkwbzdb" method="post">
+        <form name="myForm" action="https://formspree.io/f/xqkwbzdb" onsubmit="return validateForm()" method="post">
           <ul class="ul">
             <li>
               <label for="fname" class="fw-500 fz-17 lh-20">Name:</label>
@@ -356,6 +356,7 @@
             </li>
             <li>
               <input type="submit" value="Get It Touch" class="btn fw-500 fz-17 lh-24" />
+              <small id="err_info" class="fw-500 fz-17 lh-20"></small>
             </li>
           </ul>
         </form>
@@ -363,6 +364,18 @@
     </section>
   </div>
   <script type="module" src="src/main.js"></script>
+  <script>
+    function containsUppercase(str) {
+    return /[A-Z]/.test(str);
+  }
+  function validateForm() {
+      let x = document.forms["myForm"]["contact_email"].value;
+      //var emailRegex = /^[a-z]+@[a-z-0-9-]+\.[a-z-0-9-.]+$/;
+      if(containsUppercase(x)) {
+        document.getElementById('err_info').innerHTML="Email should not contain capital letter";
+        return false;
+      }
+    }
+  </script>
 </body>
-
 </html>
