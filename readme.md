@@ -1,13 +1,16 @@
 ![](https://img.shields.io/badge/Microverse-blueviolet)
 
 # Portfolio Project
-## Validation form with JavaScript
+## Reserve data to local storage and validation form with JavaScript
 
 In this project, I set up my portfolio repository. My goal here was to set up and customize my portfolio for mobile and desktop versions.
 
 ## Screenshot of the project
- - validates the email for small letters only
+ - Data preserve to local storage
 
+ ![screenshot](/images/lostr.png)
+ 
+ - validates the email for small letters only
  ![screenshot](/images/errm.png)
    
 - Other screenshots
