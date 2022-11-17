@@ -1,13 +1,20 @@
 ![](https://img.shields.io/badge/Microverse-blueviolet)
 
 # Portfolio Project
-## popup window
+## Validation form with JavaScript
 
 In this project, I set up my portfolio repository. My goal here was to set up and customize my portfolio for mobile and desktop versions.
 
-- ![screenshot](/images/scrs1.png)
-- ![screenshot](/images/inter1.png)
-- ![screenshot](/images/inter2.png)
+## Screenshot of the project
+ - validates the email for small letters only
+
+ ![screenshot](/images/errm.png)
+   
+- Other screenshots
+
+  ![screenshot](/images/scrs1.png)
+  ![screenshot](/images/inter1.png)
+  ![screenshot](/images/inter2.png)
 ## :red_circle: Live Demo
 
 [Live Preview Link](https://habasm.github.io/portfolio/)

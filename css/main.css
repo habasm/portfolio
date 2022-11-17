@@ -877,3 +877,7 @@ body {
     width: 65%;
   }
 }
+
+#err_info {
+  color: yellow;
+}
