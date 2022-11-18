@@ -166,7 +166,10 @@ document.addEventListener('DOMContentLoaded', () => {
         projectTool2.textContent = `${projects[button.id].tool2}`;
         projectTool3.textContent = `${projects[button.id].tool3}`;
         projectLinkLive.setAttribute('href', `${projects[button.id].linkLive}`);
-        projectLinkSource.setAttribute('href', `${projects[button.id].linkSource}`);
+        projectLinkSource.setAttribute(
+          'href',
+          `${projects[button.id].linkSource}`,
+        );
         modal.classList.add('active');
         backgroundModal.classList.add('active');
       } else if (button.id === '1') {
@@ -180,7 +183,10 @@ document.addEventListener('DOMContentLoaded', () => {
         projectTool2.textContent = `${projects[button.id].tool2}`;
         projectTool3.textContent = `${projects[button.id].tool3}`;
         projectLinkLive.setAttribute('href', `${projects[button.id].linkLive}`);
-        projectLinkSource.setAttribute('href', `${projects[button.id].linkSource}`);
+        projectLinkSource.setAttribute(
+          'href',
+          `${projects[button.id].linkSource}`,
+        );
         modal.classList.add('active');
         backgroundModal.classList.add('active');
       } else if (button.id === '2') {
@@ -194,7 +200,10 @@ document.addEventListener('DOMContentLoaded', () => {
         projectTool2.textContent = `${projects[button.id].tool2}`;
         projectTool3.textContent = `${projects[button.id].tool3}`;
         projectLinkLive.setAttribute('href', `${projects[button.id].linkLive}`);
-        projectLinkSource.setAttribute('href', `${projects[button.id].linkSource}`);
+        projectLinkSource.setAttribute(
+          'href',
+          `${projects[button.id].linkSource}`,
+        );
         modal.classList.add('active');
         backgroundModal.classList.add('active');
       } else if (button.id === '3') {
@@ -208,7 +217,10 @@ document.addEventListener('DOMContentLoaded', () => {
         projectTool2.textContent = `${projects[button.id].tool2}`;
         projectTool3.textContent = `${projects[button.id].tool3}`;
         projectLinkLive.setAttribute('href', `${projects[button.id].linkLive}`);
-        projectLinkSource.setAttribute('href', `${projects[button.id].linkSource}`);
+        projectLinkSource.setAttribute(
+          'href',
+          `${projects[button.id].linkSource}`,
+        );
         modal.classList.add('active');
         backgroundModal.classList.add('active');
       }
@@ -216,4 +228,45 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   closeIcon.addEventListener('click', closeModal);
+});
+
+// preserve data in the browser
+
+// declar constants for easy access
+const form = document.getElementById('myForm');
+const name = document.getElementById('fname');
+const email = document.getElementById('email');
+const message = document.getElementById('message');
+const getLocalStorage = localStorage.getItem('userProvidedInfo');
+
+// Load to each contact form fields if there is pre-saved local storage data.
+if (getLocalStorage) {
+  const dataSave = JSON.parse(getLocalStorage);
+  name.value = dataSave.name;
+  email.value = dataSave.email;
+  message.value = dataSave.message;
+}
+
+document.querySelectorAll('input, textarea').forEach((input) => {
+  input.addEventListener('input', (event) => {
+    event.preventDefault();
+    // Calling input values
+    const nameData = document.querySelector('#fname').value;
+    const emailData = document.querySelector('#email').value;
+    const msgData = document.querySelector('#message').value;
+
+    // Store values in object;
+    const infoProvided = {
+      name: nameData,
+      email: emailData,
+      message: msgData,
+    };
+
+    localStorage.setItem('userProvidedInfo', JSON.stringify(infoProvided));
+  });
+});
+
+// make the forma staying to the current load, for visualization or testing purpose
+form.addEventListener('submit', (e) => {
+  e.preventDefault();
 });
